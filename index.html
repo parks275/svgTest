@@ -9,8 +9,9 @@
             overflow-x: hidden;
             overflow-y: auto;
         }
-        #bodymovin{
-            background-color:#0FA0FC;
+
+        #menuicon{
+            background-color:#fff;
             /*width:100%;
             height:100%;*/
             width:200px;
@@ -20,39 +21,115 @@
             transform: translate3d(0,0,0);
             margin: auto;
         }
+		
+		#minmax{
+            background-color:#fff;
+            /*width:100%;
+            height:100%;*/
+            width:200px;
+            height:200px;
+            display:block;
+            overflow: hidden;
+            transform: translate3d(0,0,0);
+            margin: auto;
+        }
+
+
         .botas_loop_3,.botas_loop_2{
             display:none
         }
+		
+		table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
     </style>
     <!-- build:js bodymovin.js -->
      <script src="https://rawgit.com/parks275/WebAnimTest/master/bodymovin.js"></script>
 </head>
 <body>
-<div id="bodymovin"></div>
+<table style="width:100%">
+  <tr>
+    <th><div id="menuicon"></div></th>
+    <th>blank</th>
+  </tr>
+  <tr>
+    <td>blank</td>
+    <th><div id="minmax"></div></th>
+  </tr>
+</table>
 
 <script>
-    animContainer = document.getElementById('bodymovin');
+
+    animContainerMenuicon = document.getElementById('menuicon');
+
 var params = {
-    container: animContainer,
+    container: animContainerMenuicon,
     renderer: 'svg',
-    loop: true,
-    autoplay:true,
+    loop: false,
+    autoplay:false,
     autoloadSegments: false,
-    path: 'https://rawgit.com/parks275/WebAnimTest/master/cm_logo.json'
+    path: 'https://rawgit.com/parks275/WebAnimTest/master/menu.json'
+	
+
 };
-var anim;
-anim = bodymovin.loadAnimation(params);
-animContainer.addEventListener("mouseenter", myScript1);
-animContainer.addEventListener("mouseleave", myScript2);
-function myScript1(){
+
+var anim1;
+
+anim1 = bodymovin.loadAnimation(params);
+animContainerMenuicon.addEventListener("mouseenter", menuScript1);
+animContainerMenuicon.addEventListener("mouseleave", menuScript2);
+
+function menuScript1(){
 bodymovin.setDirection(1);
-anim.play();
+anim1.play();
 }
-function myScript2(){
+ 
+function menuScript2(){
 bodymovin.setDirection(-1);
-anim.play();
+anim1.play();
 }
    
+
 </script>
+
+<script>
+
+    animContainerMinmax = document.getElementById('minmax');
+
+var params2 = {
+    container: animContainerMinmax,
+    renderer: 'svg',
+    loop: false,
+    autoplay:false,
+    autoloadSegments: false,
+    path: 'https://rawgit.com/parks275/WebAnimTest/master/minmax.json'
+
+};
+
+var anim2;
+
+anim2 = bodymovin.loadAnimation(params2);
+animContainerMinmax.addEventListener("mouseenter", menuScript3);
+animContainerMinmax.addEventListener("mouseleave", menuScript4);
+
+function menuScript3(){
+bodymovin.setDirection(1);
+anim2.play();
+}
+ 
+function menuScript4(){
+bodymovin.setDirection(-1);
+anim2.play();
+}
+   
+
+</script>
+
 </body>
 </html>
